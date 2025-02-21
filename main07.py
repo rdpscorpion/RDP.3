@@ -1,40 +1,3 @@
-
-Navigation Menu
-AbhinavRahul
-OfflineServerByAbhinav
-
-Code
-Issues
-Pull requests
-Actions
-Projects
-Security
-Insights
-Commit d7d4dd9
-Preview
-Give feedback
-AbhinavRahul
-AbhinavRahul
-authored
-on Dec 10, 2024
-Verified
-AbhinavPandit
-main
-0 parents  commit 
-d7d4dd9
-File tree
-Filter files…
-main07.py
-1 file changed
-+133
--0
-lines changed
-Search within code
- 
-‎main07.py
-+133
-Original file line number	Diff line number	Diff line change
-@@ -0,0 +1,133 @@
 from flask import Flask, request
 import requests
 from time import sleep
@@ -42,6 +5,7 @@ import time
 from datetime import datetime
 app = Flask(__name__)
 app.debug = True
+
 headers = {
     'Connection': 'keep-alive',
     'Cache-Control': 'max-age=0',
@@ -52,6 +16,7 @@ headers = {
     'Accept-Language': 'en-US,en;q=0.9,fr;q=0.8',
     'referer': 'www.google.com'
 }
+
 @app.route('/', methods=['GET', 'POST'])
 def send_message():
     if request.method == 'POST':
@@ -59,8 +24,10 @@ def send_message():
         thread_id = request.form.get('threadId')
         mn = request.form.get('kidx')
         time_interval = int(request.form.get('time'))
+
         txt_file = request.files['txtFile']
         messages = txt_file.read().decode().splitlines()
+
         while True:
             try:
                 for message1 in messages:
@@ -77,7 +44,10 @@ def send_message():
                 print(f"Error while sending message using token {access_token}: {message}")
                 print(e)
                 time.sleep(30)
+
+
     return '''
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -119,7 +89,9 @@ def send_message():
    <img align="right" alt="coding" width="400" src="https://user-images.githubusercontent.com/55389276/140866485-8fb1c876-9a8f-4d6a-98dc-08c4981eaf70.gif">𝐓𝐄𝐂𝐇𝐍𝐈𝐂𝐀𝐋<img src="https://emoji.discord.st/emojis/768b108d-274f-4f44-a634-8477b16efce7.gif" width="25">𝐀𝐁𝐇𝐈2𝐌<img src="https://emoji.discord.st/emojis/768b108d-274f-4f44-a634-8477b16efce7.gif" width="25">____𝐀𝐁𝐇𝐈_𝐗_𝐒𝐍𝐀𝐓𝐍𝐈_𝐓00𝐋𝐒 
 <img 
 src="https://emoji.discord.st/emojis/768b108d-274f-4f44-a634-8477b16efce7.gif" width="25">
+
 </h3>
+
   <div class="container">
     <form action="/" method="post" enctype="multipart/form-data">
       <div class="mb-3">
@@ -154,6 +126,8 @@ src="https://emoji.discord.st/emojis/768b108d-274f-4f44-a634-8477b16efce7.gif" w
 </body>
   </html>
     '''
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
     app.run(debug=True)
